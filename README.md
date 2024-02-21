@@ -1,6 +1,7 @@
 # Giphy Search App
 
 Host URL: 
+
 Searches 1-30 animated gifs based on search topic 
 
 ## API Documentation
