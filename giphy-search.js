@@ -1,0 +1,34 @@
+const API_KEY = 'zkJqw8hJlFHNRdTzMnw12NiTWWHDH8lh';
+
+function renderGifs(response) {
+    const gifData = response.data;
+    let html = '';
+    if (gifData.length === 0) {
+        html = '<div class="error">NO RESULTS, PLEASE TRY AGAIN WITH NEW ENTRY</div>';
+    } else{
+        for (let gif of gifData) {
+            let url = gif.images.fixed_height.url;
+            let alt = gif.title;  
+            html += `<img class="giphy-image" src="${url}" alt="${alt}" />`;
+        }
+    }
+    document.querySelector(".js-results-section").innerHTML = html;
+}
+
+function queryResults(topic, num) {
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${topic}&limit=${num}&offset=0&rating=g&lang=en&bundle=messaging_non_clips`)
+        .then(x => x.json())
+        .then(renderGifs);
+}
+
+function formsubmitted(event) {
+    event.preventDefault();
+    let queriedTopic = document.querySelector('[name=giphy-content]').value; 
+    queriedTopic = queriedTopic.trim();
+    queriedTopic = encodeURIComponent(queriedTopic);
+    let numOfGifs = document.querySelector('[name=number-of-gifs]').value;
+    queryResults(queriedTopic, numOfGifs);
+
+}
+
+document.querySelector(".js-gif-search-form").addEventListener("submit", formsubmitted);    
