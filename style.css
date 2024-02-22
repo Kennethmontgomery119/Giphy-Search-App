@@ -3,7 +3,7 @@ html {
     margin: 0;  
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
+    background-image:url(./images/background-image.png);
 }
 
 *, *::before, *::after { 
@@ -12,18 +12,18 @@ html {
 
 body {
     min-width: 400px;
-    background-color: black;
-    color: white;   
+    background-image:url(./images/background-image.png);
+    color: rgb(0, 236, 0);   
 }
 
 .navbar-brand {
     font-family: 'Chakra Petch';
-    color:white; 
+    color:rgb(0, 236, 0); 
 }
 
 .nav-link {
     font-family: 'Chakra Petch';
-    color: white;
+    color: rgb(0, 236, 0);
 }
 
 .Main {
